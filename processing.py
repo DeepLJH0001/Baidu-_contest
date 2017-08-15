@@ -7,30 +7,7 @@ from keras.models import Model
 from keras.layers import Input,GlobalAveragePooling2D
 from keras.preprocessing.image import ImageDataGenerator
 
-def write_gap(MODEL,train_X,train_y,test_X,image_size,lambda_func=None):
-    width = image_size[0]
-    height = image_size[1]
-    input_tensor = Input((3,height,width))
-    x = input_tensor
-    if lambda_func:
-        x = Lambda(lambda_func)(x)
-    base_model = Model(input_tensor=x,weights='imagenet',include_top=False)
-    model = Model(base_model.input,GlobalAveragePooling2D()(base_model.output))
-    gen = ImageDataGenerator(
-        featurewise_center=True,
-        featurewise_std_normalization=True,
-        rotation_range = 20,
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        horizontal_flip=True
-    )
-    gen.fit(X)
-    # model.fit_generator()
-    train_generator = gen.flow(train_X,train_y,batch_size=32)
-    test_generator = gen.flow(test_X, batch_size=32)
-    train = model.predict_generator(generator=train_generator)
-    test = model.predict_generator(generator=test_generator)
-    # model.predict_generator()
+
 
 f_train = open("./data_train.txt",'rb')
 # for i in f_train:
@@ -100,12 +77,12 @@ for j in range(len(list_2)):
 # model_1 = ResNet50(include_top=False,weights='imagenet')
 # model = Xception(include_top=False,weights='imagenet')
 # model_2 = InceptionV3(include_top=False,weights='imagenet')
-from keras.preprocessing.image import ImageDataGenerator
-from keras.utils import np_utils
-y = np_utils.to_categorical(y,y.max())
+#from keras.preprocessing.image import ImageDataGenerator
+#from keras.utils import np_utils
+#y = np_utils.to_categorical(y,y.max())
 
-gen = ImageDataGenerator(
-    featurewise_center=True
+#gen = ImageDataGenerator(
+ #   featurewise_center=True
 
-)
-train_gen = gen.flow()
+#)
+#train_gen = gen.flow()
