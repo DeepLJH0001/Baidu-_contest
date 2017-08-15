@@ -1,2 +1,8 @@
 # Baidu-_contest
-#百度西交大2017大数据竞赛_mySolution 竞赛地址：js.baidu.com
+# Fine-grained Dog Classification website：js.baidu.com
+
+## Framework
+- [Keras&theano&tensorflow]
+## solution
+- Using ssd to reduce background noise
+- Feature extract from InceptionV3 VGG-19 Resnet-50 MobileNet Xception
