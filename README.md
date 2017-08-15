@@ -1,5 +1,5 @@
-# Baidu-_contest
-# Fine-grained Dog Classification website：js.baidu.com
+
+## Fine-grained Dog Classification website：js.baidu.com
 
 ## Framework
 - [Keras&theano&tensorflow]
