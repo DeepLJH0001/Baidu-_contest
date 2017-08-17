@@ -228,7 +228,7 @@ if __name__ == '__main__':
     from keras.applications.resnet50 import preprocess_input
     test_feature = np.array([0, ])
     BATCHSIZE = 1024
-
+    target_size = (224,224)
     list_2 = ['./image2/image/' + list for list in os.listdir("./image2/image")]
     for i in range(int(len(list_2) / BATCHSIZE) + 1):
         imgs = []
@@ -242,7 +242,7 @@ if __name__ == '__main__':
         else:
             test_feature = np.vstack([test_feature, model.predict(preprocess_input(imgs))])
     print (test_feature.shape)
-    y = np.asarray(y, dtype=np.uint8)
+    # y = np.asarray(y, dtype=np.uint8)
     with h5py.File("./dense161_final_feature.h5") as h:
         # h.create_dataset("train", data=train_feature)
         h.create_dataset("test", data=test_feature)
