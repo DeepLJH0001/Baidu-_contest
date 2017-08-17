@@ -210,7 +210,7 @@ if __name__ == '__main__':
     import os
     import h5py
     import numpy as np
-
+    targe_size = (224,224)
     from keras.applications.inception_v3 import preprocess_input
 
     test_feature = np.array([0, ])
@@ -229,7 +229,7 @@ if __name__ == '__main__':
         else:
             test_feature = np.vstack([test_feature, model.predict(preprocess_input(imgs))])
     print (test_feature.shape)
-    y = np.asarray(y, dtype=np.uint8)
+    #y = np.asarray(y, dtype=np.uint8)
     with h5py.File("./inception_v4_final_feature.h5") as h:
         # h.create_dataset("train", data=train_feature)
         h.create_dataset("test", data=test_feature)
