@@ -111,7 +111,7 @@ for i in range(result.shape[0]):
     result[i] = dict1[result[i]]
 list_2 = [list for list in os.listdir("./ssdimage")]
 
-with open("./reslut.txt",'wb') as f:
+with open("./result.txt",'wb') as f:
     for i in range(len(list_2)):
         f.write('%d\t%s\n'%(result[i],list_2[i][0:-4]))
     f.close()
